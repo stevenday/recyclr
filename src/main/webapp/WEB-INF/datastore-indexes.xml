@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datastore-indexes autoGenerate="true">
+ <datastore-index kind="Item" ancestor="false">
+ 	<property name="source" direction="asc" />
+ 	<property name="posted" direction="desc" />
+ </datastore-index>
+ <datastore-index kind="ItemSource" ancestor="false">
+ 	<property name="id" direction="asc" />
+ </datastore-index>
+</datastore-indexes>

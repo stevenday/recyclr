@@ -1,0 +1,43 @@
+package uk.co.gifteconomy.server;
+
+import org.junit.After;
+import org.junit.Before;
+
+import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
+import com.google.appengine.tools.development.testing.LocalMemcacheServiceTestConfig;
+import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
+import com.google.appengine.tools.development.testing.LocalTaskQueueTestConfig;
+
+/**
+ * Performs datastore setup, as described <a
+ * href="http://code.google.com/appengine/docs/java/howto/unittesting.html">here</a>.
+ *
+ * @author androns
+ */
+public abstract class LocalDatastoreTest {
+
+    private final LocalServiceTestHelper helper =
+    		new LocalServiceTestHelper(
+                    new LocalDatastoreServiceTestConfig().setDefaultHighRepJobPolicyUnappliedJobPercentage(0.1f),
+                    new LocalMemcacheServiceTestConfig(),
+                    new LocalTaskQueueTestConfig()
+                            .setQueueXmlPath("war/WEB-INF/queue.xml")
+                            .setDisableAutoTaskExecution(false)
+                    ); 
+
+    /**
+     *
+     */
+    @Before
+    public void setUp() {
+        this.helper.setUp();
+    }
+
+    /**
+     * @see LocalServiceTest#tearDown()
+     */
+    @After
+    public void tearDown() {
+        this.helper.tearDown();
+    }
+}
